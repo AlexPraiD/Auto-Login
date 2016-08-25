@@ -1,0 +1,202 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Unit2.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm2 *Form2;
+int Anim;
+int Numb()
+{
+	int i;
+
+	Form2->ADOTable1->First();
+		for(i=1;i<=Form2->ADOTable1->RecordCount;i++)
+			{
+				Form2->ADOTable1->Edit();
+					for(DWORD tt=GetTickCount();GetTickCount()-tt<1;Sleep(7))
+						Application->ProcessMessages();
+					Form2->ADOTable1->FieldByName("ID")->AsString=i;
+				Form2->ADOTable1->Post();
+					Form2->ADOTable1->Next();
+			}
+}
+
+void OffFiltre()
+	{
+		if(Form2->Edit2->Text=="" && Form2->Edit3->Text==""
+			&& Form2->Edit4->Text=="")
+			Form2->ADOTable1->Filtered=false;
+
+		if(Form2->Edit2->Text!="" && Form2->Edit3->Text=="" && Form2->Edit4->Text=="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Site] LIKE '"+ Form2->Edit2->Text +"%'"); // Search
+				Form2->ADOTable1->Filtered=true;
+			}
+
+		if(Form2->Edit2->Text=="" && Form2->Edit3->Text!="" && Form2->Edit4->Text=="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Account] LIKE '"+ Form2->Edit3->Text +"%'"); // Search
+				Form2->ADOTable1->Filtered=true;
+			}
+
+		if(Form2->Edit2->Text=="" && Form2->Edit3->Text=="" && Form2->Edit4->Text!="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Operation] LIKE '"+ Form2->Edit4->Text +"%'"); // Search
+				Form2->ADOTable1->Filtered=true;
+			}
+
+		if(Form2->Edit2->Text!="" && Form2->Edit3->Text!="" && Form2->Edit4->Text=="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Site] LIKE '"+ Form2->Edit2->Text +"%' AND [Account] LIKE '"+ Form2->Edit3->Text +"%'");
+				Form2->ADOTable1->Filtered=true;
+			}
+
+		if(Form2->Edit2->Text!="" && Form2->Edit3->Text=="" && Form2->Edit4->Text!="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Site] LIKE '"+ Form2->Edit2->Text +"%' AND [Operation] LIKE '"+ Form2->Edit4->Text +"%'");
+				Form2->ADOTable1->Filtered=true;
+			}
+
+		if(Form2->Edit2->Text=="" && Form2->Edit3->Text!="" && Form2->Edit4->Text!="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Account] LIKE '"+ Form2->Edit3->Text +"%' AND [Operation] LIKE '"+ Form2->Edit4->Text +"%'");
+				Form2->ADOTable1->Filtered=true;
+			}
+
+		if(Form2->Edit2->Text!="" && Form2->Edit3->Text!="" && Form2->Edit4->Text!="")
+			{
+				Form2->ADOTable1->Filtered=false;
+					Form2->ADOTable1->Filter =("[Site] LIKE '"+ Form2->Edit2->Text +"%' AND [Account] LIKE '"+ Form2->Edit3->Text +"%' AND [Operation] LIKE '"+ Form2->Edit4->Text +"%'");
+				Form2->ADOTable1->Filtered=true;
+			}
+	}
+
+
+//---------------------------------------------------------------------------
+__fastcall TForm2::TForm2(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Edit3Change(TObject *Sender)
+{
+OffFiltre();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Edit4Change(TObject *Sender)
+{
+OffFiltre();
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Button2Click(TObject *Sender)
+{
+Edit2->Clear();
+Edit3->Clear();
+Edit4->Clear();
+OffFiltre();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::Edit2Change(TObject *Sender)
+{
+OffFiltre();
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void __fastcall TForm2::Button5Click(TObject *Sender)
+{
+int k=0;
+	Button6Click(Sender);
+	ProgressBar1->Max=ADOTable1->RecordCount;
+	ProgressBar1->Visible=true;
+		while(ADOTable1->RecordCount!=0)
+			{
+				ADOTable1->Delete();
+				k++;
+				ProgressBar1->Position=k;
+			}
+	ProgressBar1->Visible=false;
+		ADOTable1->Append();
+			Form2->ADOTable1->FieldByName("ID")->AsString=1;
+			Form2->ADOTable1->FieldByName("Operation")->AsString="Очистка истории";
+			Form2->ADOTable1->FieldByName("Date")->AsString=Date();
+			Form2->ADOTable1->FieldByName("Time")->AsString=Time();
+		ADOTable1->Post();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button1Click(TObject *Sender)
+{
+int i;
+Anim=StrToInt(Form1->ADOTable2->FieldByName("Animation")->AsString);
+	if(Panel1->Visible!=true)
+		{
+			Panel1->Height=-10;
+			Panel1->Visible=true;
+			if(Anim==1)
+				for(i=1;i<=89;i=i+10)
+					{
+						for(DWORD tt=GetTickCount();GetTickCount()-tt<1;Sleep(1))
+						Application->ProcessMessages();
+						Panel1->Height=i;
+					}
+				Panel1->Height=89;
+		}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button6Click(TObject *Sender)
+{
+int i;
+Anim=StrToInt(Form1->ADOTable2->FieldByName("Animation")->AsString);
+	if(Panel1->Visible==true)
+		{
+			if(Anim==1)
+				for(i=89;i>=-10;i=i-10)
+					{
+						for(DWORD tt=GetTickCount();GetTickCount()-tt<1;Sleep(1))
+							Application->ProcessMessages();
+						Panel1->Height=i;
+					}
+			Panel1->Height=-10;
+			Panel1->Visible=false;
+		}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button4Click(TObject *Sender)
+{
+	ADOTable1->First();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button3Click(TObject *Sender)
+{
+	ADOTable1->Last();
+}
+//---------------------------------------------------------------------------
+

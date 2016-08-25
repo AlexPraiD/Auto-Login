@@ -1,0 +1,288 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit1H
+#define Unit1H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Data.DB.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.Grids.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.Dialogs.hpp>
+#include <Vcl.Graphics.hpp>
+#include <IWBaseComponent.hpp>
+#include <IWBaseHTML40Component.hpp>
+#include <IWBaseHTMLComponent.hpp>
+#include <IWCompExtCtrls.hpp>
+#include <Vcl.AppEvnts.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
+#include <Vcl.ComCtrls.hpp>
+#include <Vcl.Buttons.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
+#include <Vcl.ImgList.hpp>
+#include <Vcl.DBCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+	TTimer *Timer1;
+	TDataSource *DataSource1;
+	TADOTable *ADOTable1;
+	TGroupBox *GroupBox1;
+	TGroupBox *GroupBox2;
+	TDBGrid *DBGrid1;
+	TEdit *Edit3;
+	TButton *Button6;
+	TGroupBox *GroupBox3;
+	TLabel *Label3;
+	TApplicationEvents *ApplicationEvents1;
+	TGroupBox *GroupBox4;
+	TLabel *Label4;
+	TADOTable *ADOTable2;
+	TPanel *Panel2;
+	TDBGrid *DBGrid2;
+	TGroupBox *GroupBox6;
+	TLabel *Label7;
+	TTimer *Timer2;
+	TButton *Button7;
+	TButton *Button10;
+	TButton *Button11;
+	TButton *Button8;
+	TTrayIcon *TrayIcon1;
+	TPanel *Panel3;
+	TEdit *Edit4;
+	TLabel *Label8;
+	TButton *Button4;
+	TPanel *Panel4;
+	TLabel *Label1;
+	TLabel *Label2;
+	TLabel *Label9;
+	TGroupBox *GroupBox7;
+	TButton *Button5;
+	TButton *Button14;
+	TButton *Button13;
+	TLabel *Label10;
+	TEdit *Edit1;
+	TEdit *Edit2;
+	TEdit *Edit8;
+	TGroupBox *GroupBox8;
+	TButton *Button2;
+	TButton *Button3;
+	TImage *Image1;
+	TEdit *Edit5;
+	TImage *Image2;
+	TButton *Button15;
+	TCheckBox *CheckBox1;
+	TGroupBox *GroupBox9;
+	TButton *Button9;
+	TButton *Button12;
+	TADOTable *ADOTable4;
+	TImage *Image4;
+	TImage *Image5;
+	TComboBox *ComboBox1;
+	TButton *Button16;
+	TPanel *Panel5;
+	TEdit *Edit6;
+	TEdit *Edit7;
+	TEdit *Edit9;
+	TLabel *Label11;
+	TLabel *Label12;
+	TLabel *Label13;
+	TLabel *Label14;
+	TImage *Image6;
+	TImage *Image8;
+	TImage *Image7;
+	TImage *Image9;
+	TLabel *Label15;
+	TImage *Image10;
+	TSpeedButton *SpeedButton1;
+	TButton *Button1;
+	TPanel *Panel6;
+	TLabel *Label16;
+	TLabel *Label17;
+	TLabel *Label18;
+	TLabel *Label19;
+	TGroupBox *GroupBox10;
+	TEdit *Edit10;
+	TEdit *Edit11;
+	TButton *Button22;
+	TButton *Button21;
+	TCheckBox *CheckBox2;
+	TEdit *Edit13;
+	TImage *Image11;
+	TButton *Button20;
+	TCheckBox *CheckBox3;
+	TGroupBox *GroupBox11;
+	TCheckBox *CheckBox4;
+	TCheckBox *CheckBox5;
+	TGroupBox *GroupBox12;
+	TButton *Button18;
+	TButton *Button17;
+	TButton *Button19;
+	TEdit *Edit12;
+	TPanel *Panel7;
+	TLabel *Label20;
+	TCheckBox *CheckBox6;
+	TImage *Image12;
+	TSpeedButton *SpeedButton2;
+	TSpeedButton *SpeedButton3;
+	TSpeedButton *SpeedButton4;
+	TMemo *Memo1;
+	TMemo *Memo2;
+	TSpeedButton *SpeedButton5;
+	TGroupBox *GroupBox5;
+	TButton *Button23;
+	TButton *Button24;
+	TProgressBar *ProgressBar1;
+	TProgressBar *ProgressBar2;
+	TSpeedButton *SpeedButton6;
+	TTimer *Timer3;
+	TEdit *CopyThis;
+	TTimer *Timer4;
+	TADOTable *ADOTable3;
+	TCheckBox *CheckBox8;
+	TCheckBox *CheckBox7;
+	TTimer *Timer5;
+	TMemo *CopyHere;
+	TLabel *Label5;
+	TTimer *Timer6;
+	TADOTable *ADOTable5;
+	TButton *Button25;
+	TPanel *Panel1;
+	TSpeedButton *SpeedButton7;
+	TSpeedButton *SpeedButton8;
+	TEdit *Edit15;
+	TEdit *Edit14;
+	TEdit *Edit16;
+	TSpeedButton *SpeedButton9;
+	TGroupBox *GroupBox13;
+	TButton *Button26;
+	TButton *Button27;
+	TButton *Button28;
+	TSpeedButton *SpeedButton10;
+	TPanel *Panel8;
+	TTrackBar *TrackBar1;
+	TImage *Image3;
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall Button3Click(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button5Click(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Edit3Click(TObject *Sender);
+	void __fastcall Edit3KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Button6Click(TObject *Sender);
+	void __fastcall DBGrid1KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall FormKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Edit7KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Edit6KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall ApplicationEvents1Message(tagMSG &Msg, bool &Handled);
+	void __fastcall Edit3Change(TObject *Sender);
+	void __fastcall GroupBox6MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Button9Click(TObject *Sender);
+	void __fastcall Button7Click(TObject *Sender);
+	void __fastcall Timer2Timer(TObject *Sender);
+	void __fastcall Button8Click(TObject *Sender);
+	void __fastcall Button11Click(TObject *Sender);
+	void __fastcall Button12Click(TObject *Sender);
+	void __fastcall Button13Click(TObject *Sender);
+	void __fastcall Button14Click(TObject *Sender);
+	void __fastcall Edit8KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Edit1KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Edit2KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Image2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall GroupBox6MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Button4Click(TObject *Sender);
+	void __fastcall Edit5Change(TObject *Sender);
+	void __fastcall Button15Click(TObject *Sender);
+	void __fastcall ComboBox1Change(TObject *Sender);
+	void __fastcall Edit4KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall Button16Click(TObject *Sender);
+	void __fastcall Button17Click(TObject *Sender);
+	void __fastcall Edit6Change(TObject *Sender);
+	void __fastcall Edit9Change(TObject *Sender);
+	void __fastcall Edit7Change(TObject *Sender);
+	void __fastcall Button18Click(TObject *Sender);
+	void __fastcall Edit9KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall SpeedButton1Click(TObject *Sender);
+	void __fastcall Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Image10MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall DBGrid1DblClick(TObject *Sender);
+	void __fastcall Button21Click(TObject *Sender);
+	void __fastcall CheckBox2Click(TObject *Sender);
+	void __fastcall Image11MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Image11Click(TObject *Sender);
+	void __fastcall Image1Click(TObject *Sender);
+	void __fastcall Button22Click(TObject *Sender);
+	void __fastcall Button20Click(TObject *Sender);
+	void __fastcall DBGrid1CellClick(TColumn *Column);
+	void __fastcall DBGrid1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall DBGrid1KeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall Image10Click(TObject *Sender);
+	void __fastcall CheckBox3Click(TObject *Sender);
+	void __fastcall TrayIcon1DblClick(TObject *Sender);
+	void __fastcall CheckBox4Click(TObject *Sender);
+	void __fastcall CheckBox5Click(TObject *Sender);
+	void __fastcall Edit12KeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall CheckBox6Click(TObject *Sender);
+	void __fastcall Button24Click(TObject *Sender);
+	void __fastcall Button23Click(TObject *Sender);
+	void __fastcall Panel7Click(TObject *Sender);
+	void __fastcall CheckBox1Click(TObject *Sender);
+	void __fastcall Image12MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall DBGrid1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall FormResize(TObject *Sender);
+	void __fastcall SpeedButton2Click(TObject *Sender);
+	void __fastcall SpeedButton5Click(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall ProgressBar2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall ProgressBar1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Timer3Timer(TObject *Sender);
+	void __fastcall DBGrid1TitleClick(TColumn *Column);
+	void __fastcall DBGrid2TitleClick(TColumn *Column);
+	void __fastcall Timer4Timer(TObject *Sender);
+	void __fastcall CheckBox7Click(TObject *Sender);
+	void __fastcall CheckBox8Click(TObject *Sender);
+	void __fastcall Timer5Timer(TObject *Sender);
+	void __fastcall Timer6Timer(TObject *Sender);
+	void __fastcall Panel1Click(TObject *Sender);
+	void __fastcall Panel1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Button25Click(TObject *Sender);
+	void __fastcall Button28Click(TObject *Sender);
+	void __fastcall Button27Click(TObject *Sender);
+	void __fastcall SpeedButton7Click(TObject *Sender);
+	void __fastcall SpeedButton8Click(TObject *Sender);
+	void __fastcall SpeedButton9Click(TObject *Sender);
+	void __fastcall Button26Click(TObject *Sender);
+	void __fastcall SpeedButton10Click(TObject *Sender);
+	void __fastcall TrackBar1Change(TObject *Sender);
+
+
+
+
+
+
+
+
+
+
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif
